@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 import './App.css';
 
 const TextField = ({ label }) => {
@@ -13,12 +15,19 @@ const Button = ({ label }) => {
   return <button>{label}</button>;
 };
 
+
+
+
 function App() {
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log('hi');
+  };
   return (
     <div>
       <TextField label="Email"/>
       <TextField label="Phone Number"/>
-      <Button label="Submit"/>
+      <Button onClick={(e) =>handleSubmit} label="Submit"/>
     </div>
   );
 }
