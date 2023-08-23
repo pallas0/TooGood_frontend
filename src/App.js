@@ -7,10 +7,12 @@ import './App.css';
 
 
 function App() {
-  const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('')
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("")
 
   const handleSubmit = async () => {
+    console.log('hi')
+    console.log(email)
     const userData = {
       email: email,
       phone_number: phoneNumber
@@ -28,27 +30,20 @@ function App() {
     return <button onClick={handleSubmit}>{label}</button>;
   };
 
-  const TextField = ({ label }) => {
+  const TextField = ({ label, value, onChange }) => {
     return (
       <div>
         <label>{label}</label>
-        <input type="text" />
+        <input type="text" value={value} onChange={onChange} />
       </div>
     );
   };
   
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePhoneNumberChange = (event) => {
-    setPhoneNumber(event.target.value);
-  };
 
   return (
     <div>
-      <TextField label="Email" value={email} onChange={handleEmailChange}/>
-      <TextField label="Phone Number" value={phoneNumber} onChange={handlePhoneNumberChange}/>
+      <TextField label="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+      <TextField label="Phone Number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}/>
       <Button onClick={handleSubmit} label="Submit"/>
     </div>
   );
