@@ -16,7 +16,7 @@ function Signup() {
   
         try {
          const response = await axios.post('http://127.0.0.1:5000//submit_subscriber_info', userData);
-        console.log(response.data.message); // Should print 'User information added successfully'
+        console.log(response.data.message);
         } catch (error) {
             console.error('Error submitting user info:', error);
         }
