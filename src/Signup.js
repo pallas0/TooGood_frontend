@@ -5,15 +5,14 @@ import TextField from '@mui/material/TextField';
 import axios from 'axios';
 
 function Signup() {
-    const [email, setEmail] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState("")
+    const initialState = {
+        email: "",
+        phoneNumber: ""
+    };
+    
+    const [userData, setUserData] = useState(initialState);
 
     const handleSubmit = async () => {
-        const userData = {
-            email: email,
-            phone_number: phoneNumber
-        };
-  
         try {
          const response = await axios.post('http://127.0.0.1:5000//submit_subscriber_info', userData);
         console.log(response.data.message);
@@ -25,12 +24,12 @@ function Signup() {
         <div>
         <TextField id="outlined-basic" label="Email" 
         variant="outlined"
-        value = {email} 
-        onChange = {(e) => setEmail(e.target.value)}/>
+        value = {userData.email} 
+        onChange = {(e) => setUserData({...userData, email: e.target.value })}/>
         <TextField id="outlined-basic" label="Phone Number" 
         variant="outlined"
-        value = {phoneNumber}
-        onChange = {(e) => setPhoneNumber(e.target.value)} />
+        value = {userData.phoneNumber}
+        onChange = {(e) => setUserData({...userData, phoneNumber: e.target.value})} />
         <Button onClick={handleSubmit} variant="outlined">Submit</Button>
         </div>
     )
