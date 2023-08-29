@@ -9,8 +9,6 @@ function Signup() {
     const [phoneNumber, setPhoneNumber] = useState("")
 
     const handleSubmit = async () => {
-        console.log('hi')
-        console.log(email)
         const userData = {
             email: email,
             phone_number: phoneNumber
