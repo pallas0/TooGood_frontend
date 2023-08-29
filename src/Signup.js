@@ -4,6 +4,8 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
 
+import APIHandler from "./apihandler"
+
 function Signup() {
     const initialState = {
         email: "",
@@ -13,13 +15,9 @@ function Signup() {
     const [userData, setUserData] = useState(initialState);
 
     const handleSubmit = async () => {
-        try {
-         const response = await axios.post('http://127.0.0.1:5000//submit_subscriber_info', userData);
-        console.log(response.data.message);
-        } catch (error) {
-            console.error('Error submitting user info:', error);
-        }
-  };
+        APIHandler.post_data(userData)
+    }
+
     return (
         <div>
         <TextField id="outlined-basic" label="Email" 
