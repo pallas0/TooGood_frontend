@@ -5,16 +5,28 @@ import TextField from '@mui/material/TextField';
 import axios from 'axios';
 
 function Signup() {
-    const [email, setEmail] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState("")
+    // const [email, setEmail] = useState("");
+    // const [phoneNumber, setPhoneNumber] = useState("")
+    const initialState = {
+        email: "",
+        phoneNumber: ""
+    };
+    
+    const [userData, setUserData] = useState(initialState);
+
+    const handleChange = (evt) => {
+        const { name, value } = evt.target;
+        setUserData((userData) => ({
+            ...userData,
+            [name]: value
+        }));
+    };
 
     const handleSubmit = async () => {
-        console.log('hi')
-        console.log(email)
-        const userData = {
-            email: email,
-            phone_number: phoneNumber
-        };
+        // const userData = {
+        //     email: email,
+        //     phone_number: phoneNumber
+        // };
   
         try {
          const response = await axios.post('http://127.0.0.1:5000//submit_subscriber_info', userData);
@@ -23,16 +35,17 @@ function Signup() {
             console.error('Error submitting user info:', error);
         }
   };
+  //onChange = {(e) => setEmail(e.target.value)}
     return (
         <div>
         <TextField id="outlined-basic" label="Email" 
         variant="outlined"
-        value = {email} 
-        onChange = {(e) => setEmail(e.target.value)}/>
+        value = {userData.email} 
+        onChange = {(e) => setUserData(e.target.value)}/>
         <TextField id="outlined-basic" label="Phone Number" 
         variant="outlined"
-        value = {phoneNumber}
-        onChange = {(e) => setPhoneNumber(e.target.value)} />
+        value = {userData.phoneNumber}
+        onChange = {(e) => handleChange(e)} />
         <Button onClick={handleSubmit} variant="outlined">Submit</Button>
         </div>
     )
