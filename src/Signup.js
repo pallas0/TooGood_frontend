@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+import axios from 'axios';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import React, { useState } from 'react';
+import {styled} from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
-import axios from 'axios';
+
 
 import APIHandler from "./apihandler"
+
+const CssTextField = styled(TextField)({
+    "& .MuiInput-underline:after":{
+        borderBottomColor:"white"
+    }
+})
 
 function Signup() {
     const initialState = {
@@ -29,9 +37,8 @@ function Signup() {
       <div className="form">
         <div className="form-row">
           <label className="label">Email:</label>
-          <TextField
-            id="outlined-basic"
-            variant="outlined"
+          <CssTextField
+            variant="standard"
             value={userData.email}
             sx={{ input: { color: 'white' } }}
             onChange={(e) =>
@@ -41,9 +48,8 @@ function Signup() {
         </div>
         <div className="form-row">
           <label className="label">Phone Number:</label>
-          <TextField
-            id="outlined-basic"
-            variant="outlined"
+          <CssTextField
+            variant="standard"
             sx={{ input: { color: 'white' } }}
             value={userData.phoneNumber}
             onChange={(e) =>
