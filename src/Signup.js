@@ -29,10 +29,11 @@ function Signup() {
     return (
         <div className="signup-container">
       <div className="header">
-        <h1>Header Text</h1>
+        <h1>Too Good To Go SMS Alerts</h1>
       </div>
       <div className="body">
-        <p>Body Text</p>
+        <p>Enter your information below to receive an SMS notification whenever your favorite stores release new bags.  Text alerts will be sent between the hours of 8am and 10pm PT.  You can pause or cancel your subscription at any time.</p>
+        <p>Once you have submitted your information, a login confirmation will be sent to your email and app; you have two minutes to confirm before you'd need to resubmit your info.</p>
       </div>
       <div className="form">
         <div className="form-row">

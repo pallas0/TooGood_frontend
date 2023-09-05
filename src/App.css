@@ -20,6 +20,7 @@ body {
 .body {
   font-size: 18px;
   margin-bottom: 10px;
+  max-width: 600px;
 }
 
 .form-row {
