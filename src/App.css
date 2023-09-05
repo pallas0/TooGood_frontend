@@ -1,38 +1,53 @@
-.App {
-  text-align: center;
+body {
+  background-color: #0CA789; /* Set the background color for the whole page */
+  color: white;
+  margin: 0; /* Remove default margin */
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.signup-container {
+  padding: 20px;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+}
+
+.header {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.body {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.form-row {
+  display: flex;
   align-items: center;
+  margin-bottom: 10px;
+}
+
+.label {
+  width: 120px;
+  margin-right: 10px;
+}
+
+.form {
+  margin-bottom: 20px;
+}
+
+.button-container {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+/* button {
+  color: white; 
+  border: 1px solid white; 
+} */
+
+.MuiButton-outlined {
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  border: 1px solid white;
 }

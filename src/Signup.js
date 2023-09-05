@@ -19,18 +19,50 @@ function Signup() {
     }
 
     return (
-        <div>
-        <TextField id="outlined-basic" label="Email" 
-        variant="outlined"
-        value = {userData.email} 
-        onChange = {(e) => setUserData({...userData, email: e.target.value })}/>
-        <TextField id="outlined-basic" label="Phone Number" 
-        variant="outlined"
-        value = {userData.phoneNumber}
-        onChange = {(e) => setUserData({...userData, phoneNumber: e.target.value})} />
-        <Button onClick={handleSubmit} variant="outlined">Submit</Button>
+        <div className="signup-container">
+      <div className="header">
+        <h1>Header Text</h1>
+      </div>
+      <div className="body">
+        <p>Body Text</p>
+      </div>
+      <div className="form">
+        <div className="form-row">
+          <label className="label">Email:</label>
+          <TextField
+            id="outlined-basic"
+            variant="outlined"
+            value={userData.email}
+            sx={{ input: { color: 'white' } }}
+            onChange={(e) =>
+              setUserData({ ...userData, email: e.target.value })
+            }
+          />
         </div>
-    )
+        <div className="form-row">
+          <label className="label">Phone Number:</label>
+          <TextField
+            id="outlined-basic"
+            variant="outlined"
+            sx={{ input: { color: 'white' } }}
+            value={userData.phoneNumber}
+            onChange={(e) =>
+              setUserData({ ...userData, phoneNumber: e.target.value })
+            }
+          />
+        </div>
+      </div>
+      <div className="button-container">
+        <Button onClick={handleSubmit} variant="outlined"
+        sx = {{
+            color: "#FFFFFF",
+            border: "1px solid white"
+        }}>
+          Submit
+        </Button>
+      </div>
+    </div>
+    );
 }
 
 export default Signup
