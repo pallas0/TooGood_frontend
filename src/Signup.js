@@ -17,11 +17,6 @@ const CssTextField = styled(TextField)({
     },
 })
 
-const CssButton = styled(Button) ({
-    "& .MuiButton:hover":{
-
-    }
-})
 
 function Signup() {
     const initialState = {
@@ -72,7 +67,10 @@ function Signup() {
         <Button onClick={handleSubmit} variant="outlined"
         sx = {{
             color: "#FFFFFF",
-            border: "1px solid white"
+            border: "1px solid white",
+            '&:hover': {
+                border: "1px solid black"
+            }
         }}>
           Submit
         </Button>
