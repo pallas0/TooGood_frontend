@@ -52,15 +52,27 @@ function Signup() {
         setValidationError('');
         setApiError('');
 
+        // try {
+        //   await APIHandler.post_data(userData);
+        // } catch (error) {
+        //   if (error.response) {
+        //     setApiError(error.response.data.message);
+        //   } else {
+        //     console.error('Error submitting user info:', error);
+        //   }
+        // }
         try {
-          await APIHandler.post_data(userData);
+          const response = await APIHandler.post_data(userData);
+          console.log(response.message);
         } catch (error) {
           if (error.response) {
             setApiError(error.response.data.message);
           } else {
-            console.error('Error submitting user info:', error);
+            console.log(error.message)
+            setApiError('Error submitting user info: '+ error.message.toString());
           }
         }
+
     }
 
     return (
