@@ -25,9 +25,54 @@ function Signup() {
     };
     
     const [userData, setUserData] = useState(initialState);
+    const [validationError, setValidationError] = useState('');
+    const [apiError, setApiError] = useState('');
+
+    const validateEmail = (email) => {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    };
+  
+    const validatePhoneNumber = (phoneNumber) => {
+      const phoneRegex = /^\d{10,11}$/;
+      return phoneRegex.test(phoneNumber);
+    };
 
     const handleSubmit = async () => {
-        APIHandler.post_data(userData)
+        if (!validateEmail(userData.email)) {
+          setValidationError('Please enter a valid email address.');
+          return;
+        }
+    
+        if (!validatePhoneNumber(userData.phoneNumber)) {
+          setValidationError('Please enter a valid phone number (10 or 11 digits).');
+          return;
+        }
+    
+        setValidationError('');
+        setApiError('');
+
+        // try {
+        //   await APIHandler.post_data(userData);
+        // } catch (error) {
+        //   if (error.response) {
+        //     setApiError(error.response.data.message);
+        //   } else {
+        //     console.error('Error submitting user info:', error);
+        //   }
+        // }
+        try {
+          const response = await APIHandler.post_data(userData);
+          console.log(response.message);
+        } catch (error) {
+          if (error.response) {
+            setApiError(error.response.data.message);
+          } else {
+            console.log(error.message)
+            setApiError('Error submitting user info: '+ error.message.toString());
+          }
+        }
+
     }
 
     return (
@@ -62,6 +107,14 @@ function Signup() {
             }
           />
         </div>
+        <div className="error-container">
+        {validationError && (
+          <div className="error-message">{validationError}</div>
+        )}
+        {apiError && (
+          <div className="error-message">{apiError}</div>
+        )}
+      </div>
       </div>
       <div className="button-container">
         <Button onClick={handleSubmit} variant="outlined"
