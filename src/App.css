@@ -43,8 +43,6 @@ body {
   justify-content: center;
 }
 
-
-outlined-basic {
-  border-color: white !important;
-  /* border: 1px solid white; */
+.error-message {
+  color:orangered;
 }
