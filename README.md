@@ -31,19 +31,19 @@ This frontend application is part of the Too Good To Go SMS Alerts system, which
 To run this application locally, follow these steps:
 
 1. Clone this repository to your local machine:
-   
+   ```
      git clone https://github.com/your-username/too-good-to-go-frontend.git
+   ```
    
 2. Change to the project directory:
-   
+   ```
      cd too-good-to-go-frontend
-   
+   ```
 3. Install the required dependencies:
-   
+   ```
      npm install
-
+   ```
    
-
 ## Usage
 
 After installing the dependencies, you can start the development server with the following command:
