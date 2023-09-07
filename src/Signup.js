@@ -27,6 +27,7 @@ function Signup() {
     const [userData, setUserData] = useState(initialState);
     const [validationError, setValidationError] = useState('');
     const [apiError, setApiError] = useState('');
+    const [successMessage, setSuccessMessage] = useState('')
 
     const validateEmail = (email) => {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -51,27 +52,43 @@ function Signup() {
     
         setValidationError('');
         setApiError('');
+        setSuccessMessage('Submitting your information...')
 
-        // try {
-        //   await APIHandler.post_data(userData);
-        // } catch (error) {
-        //   if (error.response) {
-        //     setApiError(error.response.data.message);
-        //   } else {
-        //     console.error('Error submitting user info:', error);
-        //   }
-        // }
         try {
           const response = await APIHandler.post_data(userData);
-          console.log(response.message);
-        } catch (error) {
-          if (error.response) {
-            setApiError(error.response.data.message);
+          const subscriberId = response.subscriber_id;
+        
+          if (response.status === 201) {
+            setSuccessMessage('Check your mailbox on PC to continue...')
+            await processSubscriber(subscriberId);
+            setSuccessMessage("Subscriber favorites accessed and saved -- you're all set!");
           } else {
-            console.log(error.message)
-            setApiError('Error submitting user info: '+ error.message.toString());
+            setApiError(response.message);
+          }
+        } catch (error) {
+          handleApiError(error);
+        }
+        
+        async function processSubscriber(subscriberId) {
+          try {
+            const response = await APIHandler.process_data(subscriberId);
+            if (response.status !== 201) {
+              setApiError(response.message);
+            }
+          } catch (error) {
+            handleApiError(error);
           }
         }
+        
+        function handleApiError(error) {
+          if (error.response) {
+            setApiError(`Error: ${error.response.data.message}`);
+          } else {
+            console.log(error.message);
+            setApiError(`Error: ${error.message}`);
+          }
+        }
+        
 
     }
 
@@ -114,6 +131,7 @@ function Signup() {
         {apiError && (
           <div className="error-message">{apiError}</div>
         )}
+        {!apiError && successMessage && <div className="success-message">{successMessage}</div>}
       </div>
       </div>
       <div className="button-container">
