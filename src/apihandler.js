@@ -1,7 +1,6 @@
 import axios from "axios"
 
-const POST_ROUTE = 'http://127.0.0.1:5000/submit_subscriber_info'
-//const POST_ROUTE = 'https://toogood-backend.onrender.com/submit_subscriber_info'
+const POST_ROUTE = 'https://toogood-backend.onrender.com/submit_subscriber_info'
 
 class APIHandler {
     static async post_data(userData) {
@@ -15,7 +14,7 @@ class APIHandler {
 
     static async process_data(subscriberId) {
         try {
-            const response = await axios.get(`http://127.0.0.1:5000/process_subscriber/${subscriberId}`);
+            const response = await axios.get(`https://toogood-backend.onrender.com/process_subscriber/${subscriberId}`);
             return response.data;
         } catch (error) {
             throw error;
