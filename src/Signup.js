@@ -72,7 +72,6 @@ function Signup() {
         async function processSubscriber(subscriberId) {
           try {
             const response = await APIHandler.process_data(subscriberId);
-            debugger;
             if (response.status !== 201) {
               setApiError(response.message);
             }
