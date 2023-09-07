@@ -10,8 +10,6 @@ Welcome to the Too Good To Go SMS Alerts frontend repository! This React-based w
 - [Installation](#installation)
 - [Usage](#usage)
 - [Screenshots](#screenshots)
-- [Contributing](#contributing)
-- [License](#license)
 
 
 ## About
@@ -52,4 +50,6 @@ After installing the dependencies, you can start the development server with the
     
 This will launch the application locally, and you can access it in your web browser at http://localhost:3000.  Without the backend you won't start receiving text messages; sign up for the deployed version [here](https://too-good-frontend.vercel.app/).
 
-
+## Screenshots
+Main Page
+<img width="846" alt="Screenshot 2023-09-07 at 3 10 34 PM" src="https://github.com/pallas0/TooGood_frontend/assets/52135849/b6003767-2a76-402d-92b1-e43882d27efa">
