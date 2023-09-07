@@ -56,21 +56,40 @@ function Signup() {
 
         try {
           const response = await APIHandler.post_data(userData);
-          console.log(response)
+          const subscriberId = response.subscriber_id;
+        
           if (response.status === 201) {
-            setSuccessMessage('Subscriber information added successfully.');
+            setSuccessMessage('Check your mailbox on PC to continue...')
+            await processSubscriber(subscriberId);
+            setSuccessMessage("Subscriber favorites accessed and saved -- you're all set!");
           } else {
-            setApiError('Failed to add subscriber information.')
+            setApiError(response.message);
           }
         } catch (error) {
-          if (error.response) {
-            console.log("first", error.response)
-            setApiError('Error submitting user info: ' + error.response.data.message);
-          } else {
-            console.log(error.message)
-            setApiError('Error submitting user info: '+ error.message.toString());
+          handleApiError(error);
+        }
+        
+        async function processSubscriber(subscriberId) {
+          try {
+            const response = await APIHandler.process_data(subscriberId);
+            debugger;
+            if (response.status !== 201) {
+              setApiError(response.message);
+            }
+          } catch (error) {
+            handleApiError(error);
           }
         }
+        
+        function handleApiError(error) {
+          if (error.response) {
+            setApiError(`Error: ${error.response.data.message}`);
+          } else {
+            console.log(error.message);
+            setApiError(`Error: ${error.message}`);
+          }
+        }
+        
 
     }
 

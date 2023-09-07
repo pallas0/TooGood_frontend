@@ -12,6 +12,15 @@ class APIHandler {
             throw error;
         }
     }
+
+    static async process_data(subscriberId) {
+        try {
+            const response = await axios.get(`http://127.0.0.1:5000/process_subscriber/${subscriberId}`);
+            return response.data;
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 export default APIHandler
