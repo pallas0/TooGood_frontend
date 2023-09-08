@@ -51,4 +51,5 @@ After installing the dependencies, you can start the development server with the
 This will launch the application locally, and you can access it in your web browser at http://localhost:3000.  Without the backend you won't start receiving text messages; sign up for the deployed version [here](https://too-good-frontend.vercel.app/).
 
 ## Screenshots
-[coming soon]
+<img width="846" alt="Screenshot 2023-09-07 at 3 10 34 PM" src="https://github.com/pallas0/TooGood_frontend/assets/52135849/29d27323-00ac-4a17-8e04-cdb21521dd9a">
+
