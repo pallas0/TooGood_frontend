@@ -6,15 +6,19 @@ Welcome to the Too Good To Go SMS Alerts frontend repository! This React-based w
 ## Table of Contents
 
 - [About](#about)
+- [Screenshots](#screenshots)
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Screenshots](#screenshots)
+
 
 
 ## About
 
 This frontend application is part of the Too Good To Go SMS Alerts system, which provides a convenient way for users to receive updates on food availability from their favorite restaurants on the Too Good To Go platform. It's built with React and offers a user-friendly interface for signing up and managing notifications.
+
+## Screenshots
+<img width="846" alt="Screenshot 2023-09-07 at 3 10 34 PM" src="https://github.com/pallas0/TooGood_frontend/assets/52135849/29d27323-00ac-4a17-8e04-cdb21521dd9a">
 
 
 ## Features
@@ -50,6 +54,4 @@ After installing the dependencies, you can start the development server with the
     
 This will launch the application locally, and you can access it in your web browser at http://localhost:3000.  Without the backend you won't start receiving text messages; sign up for the deployed version [here](https://too-good-frontend.vercel.app/).
 
-## Screenshots
-<img width="846" alt="Screenshot 2023-09-07 at 3 10 34 PM" src="https://github.com/pallas0/TooGood_frontend/assets/52135849/29d27323-00ac-4a17-8e04-cdb21521dd9a">
 
